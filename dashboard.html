@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Covid 19 Status Data</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Cek Kondisi Kamu Saat Ini</h5>
+      </div>
+      <div class="row center">
+        <a href="cek.html" id="download-button" class="btn-large waves-effect waves-light orange">Sekarang !!!</a>
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Covid Dunia</h5>
+            <div>
+              <canvas id="perbulan"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Kematian Covid Dunia</h5>
+            <div>
+              <canvas id="pertahun"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Sembuh Covid Dunia</h5>
+            <div>
+              <canvas id="global"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br><hr><br><br>
+
+      <!--   Icon Section Indonesia   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Covid Indonesia</h5>
+            <div>
+              <canvas id="perbulanIndonesia"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Kematian Covid Indonesia</h5>
+            <div>
+              <canvas id="pertahunIndonesia"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Sembuh Covid Indonesia</h5>
+            <div>
+              <canvas id="globalIndonesia"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br><hr><br><br>
+
+      <!--   Icon Section Jakarta   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Covid Jakarta</h5>
+            <div>
+              <canvas id="perbulanJakarta"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Kematian Covid Jakarta</h5>
+            <div>
+              <canvas id="pertahunJakarta"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h5 class="center">Perkembangan Pasien Sembuh Covid Jakarta</h5>
+            <div>
+              <canvas id="globalJakarta"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br><br>
+  </div>
+
+  <!-- footer -->
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Perday's Sources</h5>
+          <p class="grey-text text-lighten-4">just make something that is in the head before finally disappearing.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contact</h5>
+          <ul>
+            <li><a target="_blank" class="white-text" href="https://wa.me/6287863465230">Whatsapp</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" target="_blank" href="https://instagram.com/mferdixansyh">Instagram</a></li>
+            <li><a class="white-text" target="_blank" href="mailto:ferdiadit12@gmail.com">Gmail</a></li>
+            <li><a class="white-text" target="_blank" href="https://github.com/mferdix">Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+      const ctx = document.getElementById('perbulan');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [7582921, 829102738, 662419562],
+              borderWidth: 1,
+              borderColor: '#243763',
+              backgroundColor: '#FF6E31'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const ctx2 = document.getElementById('pertahun');
+        new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [2019, 92817, 6687779],
+              borderWidth: 1,
+              borderColor: '#3C6255',
+              backgroundColor: '#61876E'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const ctx3 = document.getElementById('global');
+        new Chart(ctx3, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [201928, 9201637, 634983987],
+              borderWidth: 1,
+              borderColor: '#FD8A8A',
+              backgroundColor: '#F1F7B5'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const perbulanIndonesia = document.getElementById('perbulanIndonesia');
+        new Chart(perbulanIndonesia, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [7582921, 829102738, 662419562],
+              borderWidth: 1,
+              borderColor: '#ADA2FF',
+              backgroundColor: '#C0DEFF'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const pertahunIndonesia = document.getElementById('pertahunIndonesia');
+        new Chart(pertahunIndonesia, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [2019, 92817, 6687779],
+              borderWidth: 1,
+              borderColor: '#EB455F',
+              backgroundColor: '#FCFFE7'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const globalIndonesia = document.getElementById('globalIndonesia');
+        new Chart(globalIndonesia, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [201928, 9201637, 634983987],
+              borderWidth: 1,
+              borderColor: '#F56EB3',
+              backgroundColor: '#CB1C8D'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const perbulanJakarta = document.getElementById('perbulanJakarta');
+        new Chart(perbulanJakarta, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [7582921, 829102738, 662419562],
+              borderWidth: 1,
+              borderColor: '#344D67',
+              backgroundColor: '#6ECCAF'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const pertahunJakarta = document.getElementById('pertahunJakarta');
+        new Chart(pertahunJakarta, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [2019, 92817, 6687779],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const globalJakarta = document.getElementById('globalJakarta');
+        new Chart(globalJakarta, {
+          type: 'line',
+          data: {
+            labels: ['2020', '2021', '2022'],
+            datasets: [{
+              label: 'Percentage of People',
+              data: [201928, 9201637, 634983987],
+              borderWidth: 1,
+              borderColor: '#404258',
+              backgroundColor: '#474E68'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+
+
+
+
+  </script>
+  </body>
+</html>

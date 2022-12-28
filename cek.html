@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Starter Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+  <body>
+
+    <br><br><br><br><br>
+
+    <div class="container">
+        <div class="row">
+          <form action="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="last_name" type="text" class="validate">
+                <label for="last_name">Nama Pasien</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col m6 s12">
+                <select id="indikasiSakit">
+                  <option value="Iya">Iya</option>
+                  <option value="Tidak">Tidak</option>
+                </select>
+                <label>Sakit Akibat Kecelakaan?</label>
+              </div>
+              <div class="input-field col m6 s12">
+                <select id="indikasiTingkatSakit">
+                  <option value="Berat">Berat</option>
+                  <option value="Ringan">Ringan</option>
+                </select>
+                <label>Tingkat Kesakitan</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select id="indikasiCovid">
+                  <option value="Iya">Iya</option>
+                  <option value="Tidak">Tidak</option>
+                </select>
+                <label>Indikasi Terkena Covid?</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <!-- Modal Trigger -->
+                    <button data-target="modal1" id="target" class="btn modal-trigger">Modal</button>
+
+                  <!-- Modal Structure -->
+                  <div id="modal1" class="modal">
+                    <div class="modal-content">
+                      <h4 id="yourName">Nama Kamu, <b>...</b></h4>
+                      <p id="penjelasan"></p>
+                      <p id="tambahan"></p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div> 
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script> 
+    <script src="js/init.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('select').formSelect();
+        
+
+        $( "#target" ).click(function() {
+          // Ambil data dari Form
+          var name = $('#last_name').val();
+          var indikasiSakit = $('#indikasiSakit').val();
+          var indikasiTingkatSakit = $('#indikasiTingkatSakit').val()
+          var indikasiCovid = $('#indikasiCovid').val();
+          var kesimpulan;
+
+          if(indikasiSakit == "Tidak" && indikasiTingkatSakit == "Ringan" && indikasiCovid == "Tidak") { kesimpulan = "Penanganan Umum"; }
+          if(indikasiSakit == "Tidak" && indikasiTingkatSakit == "Ringan" && indikasiCovid == "Iya") { kesimpulan = "Penanganan Umum Secara Khusus"; }
+          if(indikasiSakit == "Tidak" && indikasiTingkatSakit == "Berat" && indikasiCovid == "Tidak") { kesimpulan = "Penanganan Umum Dengan Cepat Bertindak"; }
+          if(indikasiSakit == "Tidak" && indikasiTingkatSakit == "Berat" && indikasiCovid == "Iya") { kesimpulan = "Penanganan Umum Dengan Cepat Bertindak Secara Khusus"; }
+          if(indikasiSakit == "Iya" && indikasiTingkatSakit == "Ringan" && indikasiCovid == "Tidak") { kesimpulan = "Penanganan Prioritas Kecelakaan"; }
+          if(indikasiSakit == "Iya" && indikasiTingkatSakit == "Ringan" && indikasiCovid == "Iya") { kesimpulan = "Penanganan Prioritas Kecelakaan Secara Khusus"; }
+          if(indikasiSakit == "Iya" && indikasiTingkatSakit == "Berat" && indikasiCovid == "Tidak") { kesimpulan = "Penanganan Prioritas Kecelakaan Dengan Cepat Bertindak"; }
+          if(indikasiSakit == "Iya" && indikasiTingkatSakit == "Berat" && indikasiCovid == "Iya") { kesimpulan = "Penanganan Prioritas Kecelakaan Dengan Cepat Bertindak Secara Khusus"; }
+
+          // Olah Output
+          $('#yourName').html("Nama Kamu, <b>"+name+"");
+          if(indikasiCovid === "Iya") {
+            $('#penjelasan').html("Akibat Kecelakaan : <b>"+ indikasiSakit +"</b> <br> Indikasi Terkena Covid : <b>"+ indikasiCovid +"</b> <br> Maka dilakukannya jenis : <b>" + kesimpulan +"</b><br><br><br>Terindikasi kalau kamu terkena COVID - 19 , Disarankan untuk mengikuti panduan dari artikel berikut ini. Silahkan klik Tombol <a target='_blank' href='https://www.alodokter.com/covid-19'> berikut ini </a> agar dapat segera ditangani");
+          }else {
+            $('#penjelasan').html("Akibat Kecelakaan <b>"+ indikasiSakit +"</b> <br> Indikasi Terkena Covid <b>"+ indikasiCovid +"</b> <br> Maka dilakukannya jenis <b>" + kesimpulan +"</b>");
+          }
+          
+
+          $('.modal').modal();
+        });
+      });
+
+    </script>
+  </body>
+</html>

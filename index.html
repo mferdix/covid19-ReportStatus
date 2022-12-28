@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+
+    nav {
+      z-index: 2;
+      position: absolute;
+    }
+
+    iframe {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+          }
+  </style>
+</head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="dashboard.html" target="myiframe" class="brand-logo">Covid 19</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="dashboard.html" target="myiframe">Dashboard</a></li>
+        <li><a href="about/index.html" target="myiframe">About Covid 19</a></li>
+        <li><a href="cek.html" target="myiframe">Check My Self</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="dashboard.html" target="myiframe">Dashboard</a></li>
+        <li><a href="about/index.html" target="myiframe">About Covid 19</a></li>
+        <li><a href="cek.html" target="myiframe">Check My Self</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <iframe name="myiframe" width="100%" src="dashboard.html" title="W3Schools Free Online Web Tutorials"></iframe>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+
+
+  </body>
+</html>
